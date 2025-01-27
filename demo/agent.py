@@ -14,7 +14,7 @@ class ConversationalAgent:
                  outputs_dir) -> None:
         self.pipe = pipeline(model_path,
                         chat_template_config=ChatTemplateConfig(model_name='internvl2-internlm2'),
-                        backend_config=TurbomindEngineConfig(session_len=8192))
+                        backend_config=TurbomindEngineConfig(session_len=16384))
         self.uploaded_images_storage = os.path.join(outputs_dir, "uploaded")
         self.uploaded_images_storage = os.path.abspath(self.uploaded_images_storage)
         os.makedirs(self.uploaded_images_storage, exist_ok=True)
@@ -76,14 +76,13 @@ class ConversationalAgent:
         message,
         image,
         chat_history: gr.Chatbot,
-        top_p,
         temperature,
         chat_state,
     ):
         current_time = datetime.now().strftime("%b%d-%H:%M:%S")
         logging.info(f"Time: {current_time}")
         logging.info(f"User: {message}")
-        gen_config = GenerationConfig(top_p=top_p, temperature=temperature)
+        gen_config = GenerationConfig(temperature=temperature)
         chat_input = message
         if image is not None:
             save_image_path = os.path.join(self.uploaded_images_storage, "{}.jpg".format(len(os.listdir(self.uploaded_images_storage))))
