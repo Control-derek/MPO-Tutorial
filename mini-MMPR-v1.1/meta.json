@@ -1,0 +1,9 @@
+{
+    "mini_geometry3k_en_20240402_extracted_pairs_vqa_correctness_rules": {
+        "root": "/root/MPO/MPO-Tutorial/mini-MMPR-v1.1/images/Geometry3K",
+        "annotation": "/root/MPO/MPO-Tutorial/mini-MMPR-v1.1/annotations/mini_geometry3k_en_20240402_extracted_pairs_vqa_correctness_rules.jsonl",
+        "data_augment": false,
+        "repeat_time": 1.0,
+        "length": 78
+    }
+}
